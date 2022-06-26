@@ -107,24 +107,34 @@ const getProfitForCrop = (input) => {
     //end getProfitForCrop -----------------------------------------------
 
 
-//start getTotalProfit w? not yet-------------------------------------
+//start getTotalProfit w? works? yes-------------------------------------
 
 const getTotalProfit = (crops) => {
         // console.log('crops in func out .map', crops); //w? y
         // console.log('crops[0].crop.yield in func out .map', crops[0].crop.yield); //? yes
         let profitForCrop_1 = 0;
         const totalProfit = crops.map((eachCrop) => {
-                //  console.log('crops.map', eachCrop); //W? yes
+                console.log('crops.map', eachCrop); //W? yes
                 const profitForCrop = getProfitForCrop(eachCrop); // w ? y
-                profitForCrop_1 = profitForCrop_1 + profitForCrop
-                console.log("profitForCrop_1 ", profitForCrop_1);
-                console.log("profitForCrop", profitForCrop); //w? y
-                return profitForCrop_1 //?
-                    // console.log("totalProfit,", totalProfit);
+                console.log('profitForCrop', profitForCrop);
+                console.log('return profitForCrop inner function ', profitForCrop);
+                return profitForCrop
             }) //map
-        console.log('profitForCrop_1[1]', profitForCrop_1[1]); //W? yes
-        return totalProfit;
-        console.log('totalProfit', totalProfit);
+
+        console.log('totalProfit for return', totalProfit); //W? yes
+
+        console.log('totalProfit after return', totalProfit);
+        //reduce Works? yes amazing job , way to go, thumb up
+        const totalProfitSum = totalProfit.reduce((total, item) => {
+                console.log('total:', total);
+                console.log('item:', item);
+
+                const totalItem = total + item;
+                return totalItem
+
+            }, 0) //reduce
+        return totalProfitSum
+        console.log('totalProfitSum: ${totalProfitSum}');
     } //getTotal
 
 
