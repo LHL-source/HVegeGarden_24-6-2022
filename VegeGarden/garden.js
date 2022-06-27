@@ -54,31 +54,32 @@ const getYieldForPlant_1 = (input, factor) => {
                 wind = 1;
         };
     };
-    console.log("sun, wind : ", sun, wind);
-    const yieldPerPlant = input.field * sun * wind;
+    console.log("sun, wind : ", sun, wind); //w? y
+    const yieldPerPlant = input.yield * sun * wind;
     console.log("yield per plant:", yieldPerPlant);
     return parseFloat(yieldPerPlant.toFixed(2));
 
 }; // getYieldForPlant_1 with factor
 //end getYieldForPlant_1 ------------------------------
 
-//getYieldForCrop with environment factor W? not yet-----------------------
-const getYieldForCrop = (input) => {
-    console.log('input of yetYieldForCrop: ', input);
+//getYieldForCrop with environment factor W? yes good job-----------------------
+const getYieldForCrop = (input, factor) => {
+    //console.log('input of getYieldForCrop: ', input);
 
     const yieldPerPlant = getYieldForPlant_1(input.crop, factor);
-    console.log('input.crop of yetYieldForCrop:', input.crop);
-    console.log('factor of yetYieldForCrop:', factor);
-    console.log('yieldPerPlant', yieldPerPlant);
+    // console.log('input.crop of yetYieldForCrop:', input.crop);
+    // console.log('factor of yetYieldForCrop:', factor); //w? y
+    // console.log('yieldPerPlant', yieldPerPlant); //w? y
 
 
     const yieldPerCrop = yieldPerPlant * input.numCrops;
-    console.log(' input.numCrops of getYieldForCrop', yieldPerCrop);
-    console.log(' yieldPerCrop', yieldPerCrop);
-    const parseYieldForCrop = parseFloat(yieldPerCrop.toFixed(2));
-    console.log('parseFloat yieldPerCrop of getYieldForCrop:', parseYieldForCrop);
+    //console.log(' input.numCrops of getYieldForCrop', yieldPerCrop); //w?y
+    // console.log(' yieldPerCrop', yieldPerCrop); //w?y
+    const parseYieldForCrop = parseFloat(yieldPerCrop.toFixed(2)); //w?y
+    // console.log('parseFloat yieldPerCrop of getYieldForCrop:', parseYieldForCrop);
     return parseYieldForCrop;
 
+    //here under getYieldForCrop no factor w? yes-------------------------
     // const cropDataYield = input.crop.yield; //w? y
     // const cropDataNumCrops = input.numCrops;
     // // console.log('cropDataNumCrops', cropDataNumCrops); //w?y
@@ -89,25 +90,11 @@ const getYieldForCrop = (input) => {
 
 //end getYieldForCrop no factor------------------------------------
 
-//getYieldForCrop with environment factorW? not yet-----------------------
-// const getYieldForCropFactor = (input, factor) => {
-//     const cropDataYield = input.crop.yield; //w? y
-//     const cropDataNumCrops = input.numCrops;
-//     // console.log('cropDataNumCrops', cropDataNumCrops); //w?y
-//     const result = cropDataYield * cropDataNumCrops; //w? y
-//     //  console.log('result', result); //w? y
 
 
-
-//     return result; //???
-// }; //yetyieldForCrop
-
-//end getYieldForCrop with factor------------------------------------
-
-
-//start test getTotalYield works? works? 23-6--------------------------------------
-const getTotalYield = (input, factor) => {
-        console.log('getTotalYield', input); //w? yes amazing job
+//start test getTotalYield no factor works? yes? 23-6--------------------------------------
+const getTotalYield = (input) => {
+        console.log('input of getTotalYield ', input);
 
         const cornYield = input.crops[0].crop.yield; //w?y
         console.log('cornYield ', cornYield); //w?y
@@ -128,6 +115,45 @@ const getTotalYield = (input, factor) => {
 
         return resultYieldCrop
     } //getTotalY
+
+//end getTotalYield---------------------------------------------------------------
+
+//start test getTotalYield WITH factor works? not yet? 23-6--------------------------------------
+const getTotalYieldWithFactor = (input, factor) => {
+    console.log('getTotalYieldWithFactor input', input); //w? 
+    console.log('getTotalYieldWithFactor factor', factor);
+
+    const yieldPerCrop = input.crops.map((eachCrop) => {
+        console.log('eachCrop ', eachCrop);
+        getYieldForCrop(eachCrop, factor)
+        console.log('eachCrop of getYieldForcrop in map', getYieldForCrop)
+    }); //.map
+    const totalYield = yieldPerCrop.reduce((acc, cur) => acc + cur);
+    console.log('acc of totalYield', acc);
+    console.log('cur of totalYield', cur);
+    return parseFloat(totalYield.toFixed(2));
+
+}; //getTotal
+
+// const cornYield = input.crops[0].crop.yield; //w?y
+// console.log('cornYield ', cornYield); //w?y
+// const cornNumCrops = input.crops[0].numCrops; //w?y
+// // console.log('cornNumCrops ', cornNumCrops); //w? y
+// const cornYieldNumCrops = cornYield * cornNumCrops; //w? y
+// //  console.log('cornYieldNumCrops  ', cornYieldNumCrops); //w? y
+
+// const pumpkinYield = input.crops[1].crop.yield; //w? not yet
+// // console.log('pumpkinYield', pumpkinYield); // W?not yet
+// const pumpkinNumCrops = input.crops[1].numCrops; //w?y
+// // console.log('pumpkinNumCrops ', pumpkinNumCrops); //w/y
+// const pumpkinYieldNumCrops = pumpkinYield * pumpkinNumCrops; //w? y
+// // console.log('pumpkinYieldNumCrops  ', pumpkinYieldNumCrops); //w? y
+
+// const resultYieldCrop = cornYieldNumCrops + pumpkinYieldNumCrops; //wy
+// // console.log(' resultYieldCrop  ', resultYieldCrop); //w? y
+
+return input //?
+} //getTotalY
 
 //end getTotalYield---------------------------------------------------------------
 

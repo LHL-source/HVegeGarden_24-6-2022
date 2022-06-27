@@ -68,24 +68,25 @@ describe("getYieldForPlant_1", () => {
 
 //end getYieldForCrop no factor----------------------------
 
-// getYieldForCrop with factor w? not yet---------------------------
+// getYieldForCrop with factor w? yes ---------------------------
 describe("getYieldForCrop", () => {
     test("Get yield for crop, with environmentfactors", () => {
         const environmentFactors = {
             sun: "low",
+            wind: "medium",
         };
         const input = {
             crop: corn,
             numCrops: 1,
         };
-        expect(getYieldForCrop(input, environmentFactors)).toBe(24); //24
+        expect(getYieldForCrop(input, environmentFactors)).toBe(16.80); //24
     }); //test
 }); //desc
 
 //end getYieldForCrop with factor----------------------------
 
 
-//getTotalYield w? yes------------------------------------
+//getTotalYield no factorw? yes------------------------------------
 describe("getTotalYield", () => {
     test("Calculate total yield with multiple crops no fac", () => {
         // const corn = {
@@ -93,17 +94,35 @@ describe("getTotalYield", () => {
         //     yield: 3,
         // }; //corn
 
-        const environmentFactors = {
-            sun: "medium",
+        // const environmentFactors = {
+        //     sun: "medium",
 
-        }; //envirnFac
+        //}; //envirnFac
         const crops = [
             { crop: corn, numCrops: 10 },
             { crop: pumpkin, numCrops: 2 },
         ];
-        expect(getTotalYield({ crops, environmentFactors })).toBe(308);
+        expect(getTotalYield({ crops })).toBe(308);
     }); //test
     //end getTotalYield---------------------------------------------
+
+    //getTotalYield WITH factorw? not yet------------------------------------
+    describe("getTotalYieldWithFactor", () => {
+        test("getTotalYield WITH factor", () => {
+
+            const crops = [
+                { crop: corn, numCrops: 10 },
+                { crop: pumpkin, numCrops: 2 },
+            ];
+            const environmentFactors = {
+                sun: "high",
+                wind: "high",
+            }; //envirnFac
+            expect(getTotalYieldWithFactor({ crops, environmentFactors }))
+                .toBe(184.80); //308
+        }); //test
+    });
+    //end getTotalYield--------------------------------------
 
     //test Calculate total yield with 0 amount: w? yes
     //     test("Calculate total yield with 0 amount", () => {
