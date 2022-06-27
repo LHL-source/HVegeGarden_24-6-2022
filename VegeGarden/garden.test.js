@@ -118,7 +118,7 @@ describe("getTotalYield", () => {
                 sun: "high",
                 wind: "high",
             }; //envirnFac
-            expect(getTotalYieldWithFactor({ crops, environmentFactors }))
+            expect(getTotalYieldWithFactor({ crops }, environmentFactors))
                 .toBe(184.80); //308
         }); //test
     });

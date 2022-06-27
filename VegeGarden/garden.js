@@ -8,8 +8,8 @@
 //end getYieldForplant_1------------------------------
 //start getYieldForPlant_1 w with factor?not yet
 const getYieldForPlant_1 = (input, factor) => {
-    console.log('input for if:', input); //w? y
-    console.log('factor for if:', factor); //w?y
+    console.log('input getYieldFroPlant_1 before if:', input); //w? y
+    console.log('factor getYieldForPlant_1 before if:', factor); //w?y
     if (!factor) {
         const testCornYield = input.crop.yield;
         console.log('testCornYield:', testCornYield);
@@ -152,8 +152,8 @@ const getTotalYieldWithFactor = (input, factor) => {
 // const resultYieldCrop = cornYieldNumCrops + pumpkinYieldNumCrops; //wy
 // // console.log(' resultYieldCrop  ', resultYieldCrop); //w? y
 
-return input //?
-} //getTotalY
+//return input //?
+//} //getTotalY
 
 //end getTotalYield---------------------------------------------------------------
 
