@@ -8,29 +8,29 @@ const corn = {
             low: -20,
             medium: 0,
             high: 50,
-        },
+        }, //sun
         wind: {
             low: 0,
             medium: -30,
             high: -60,
-        },
-    },
+        }, //wind
+    }, //fac
 }; //corn
 const pumpkin = {
     name: "pumpkin",
     yield: 4,
     salesPrice: 3,
-    factors: {
-        sun: {
-            low: -20,
-            medium: 0,
-            high: 50,
-        },
-        wind: {
-            low: 0,
-            medium: -30,
-            high: -60,
-        },
-    },
+    // factors: {
+    //     sun: {
+    //         low: -20,
+    //         medium: 0,
+    //         high: 50,
+    //     },//sun
+    //     wind: {
+    //         low: 0,
+    //         medium: -30,
+    //         high: -60,
+    //     },//wind
+    // },//Fac
 }; //pumpkin
 module.exports = { corn, pumpkin };

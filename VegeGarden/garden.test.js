@@ -31,46 +31,77 @@ const {
 //getYieldForPlant_1 w? yes ----------------------------------------------
 describe("getYieldForPlant_1", () => {
 
-    const input = {
-        crop: corn,
-        numCrops: 1,
-    };
-    //test getYieldForplatn no environ w? yes good job
-    test("Get yield for plant with no environment factors", () => {
-        expect(getYieldForPlant_1(input)).toBe(30);
+    // const input = {
+    //     crop: corn,
+    //     numCrops: 1,
+    // };
+
+    //test getYieldForplatn  environ w? yes good job
+    test("Get yield for plant with  environment factors", () => {
+        const input = {
+            crop: corn,
+            numCrops: 1,
+        }; //input
+        const factor = {
+            sun: "low",
+            wind: "medium",
+
+        }; //envirnFac
+
+        expect(getYieldForPlant_1(input, factor)).toBe(16.80); //30//24.00
     }); //test
 }); //desc
 //end getYieldForplant_1--------------------------------------------
 
 
-// getYieldForCrop w? yes good job---------------------------
-describe("getYieldForCrop", () => {
-    test("Get yield for crop, simple", () => {
+// getYieldForCrop no factorw? yes good job---------------------------
+// describe("getYieldForCrop", () => {
+//     test("Get yield for crop, no environments factor", () => {
 
+//         const input = {
+//             crop: corn,
+//             numCrops: 1,
+//         };
+//         expect(getYieldForCrop(input)).toBe(30); //input, toBe(30)
+//     }); //test
+// }); //desc
+
+//end getYieldForCrop no factor----------------------------
+
+// getYieldForCrop with factor w? not yet---------------------------
+describe("getYieldForCrop", () => {
+    test("Get yield for crop, with environmentfactors", () => {
+        const environmentFactors = {
+            sun: "low",
+        };
         const input = {
             crop: corn,
             numCrops: 1,
         };
-        expect(getYieldForCrop(input)).toBe(30);
+        expect(getYieldForCrop(input, environmentFactors)).toBe(24); //24
     }); //test
 }); //desc
 
-
+//end getYieldForCrop with factor----------------------------
 
 
 //getTotalYield w? yes------------------------------------
 describe("getTotalYield", () => {
-    test("Calculate total yield with multiple crops", () => {
+    test("Calculate total yield with multiple crops no fac", () => {
         // const corn = {
         //     name: "corn",
         //     yield: 3,
         // }; //corn
 
+        const environmentFactors = {
+            sun: "medium",
+
+        }; //envirnFac
         const crops = [
             { crop: corn, numCrops: 10 },
             { crop: pumpkin, numCrops: 2 },
         ];
-        expect(getTotalYield({ crops })).toBe(308);
+        expect(getTotalYield({ crops, environmentFactors })).toBe(308);
     }); //test
     //end getTotalYield---------------------------------------------
 
