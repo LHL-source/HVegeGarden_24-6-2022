@@ -18,7 +18,7 @@ const getYieldForPlant_1 = (input, factor) => {
     }; //if !factor
     let sun;
     let wind;
-    if (!input.factors.sun) {
+    if (!input) {
         sun = 1;
     } //if
     else {
@@ -37,7 +37,7 @@ const getYieldForPlant_1 = (input, factor) => {
         }; //switch
 
     }; //else
-    if (!input.factors.wind) {
+    if (!input) {
         wind = 1;
     } else {
         switch (factor.wind) {
@@ -52,19 +52,20 @@ const getYieldForPlant_1 = (input, factor) => {
                 break;
             default:
                 wind = 1;
-        };
-    };
+        }; //switch
+    }; //else
     console.log("sun, wind : ", sun, wind); //w? y
     const yieldPerPlant = input.yield * sun * wind;
     console.log("yield per plant:", yieldPerPlant);
     return parseFloat(yieldPerPlant.toFixed(2));
 
 }; // getYieldForPlant_1 with factor
+
 //end getYieldForPlant_1 ------------------------------
 
 //getYieldForCrop with environment factor W? yes good job-----------------------
 const getYieldForCrop = (input, factor) => {
-    //console.log('input of getYieldForCrop: ', input);
+    console.log('input of getYieldForCrop: ', input);
 
     const yieldPerPlant = getYieldForPlant_1(input.crop, factor);
     // console.log('input.crop of yetYieldForCrop:', input.crop);
@@ -76,7 +77,7 @@ const getYieldForCrop = (input, factor) => {
     //console.log(' input.numCrops of getYieldForCrop', yieldPerCrop); //w?y
     // console.log(' yieldPerCrop', yieldPerCrop); //w?y
     const parseYieldForCrop = parseFloat(yieldPerCrop.toFixed(2)); //w?y
-    // console.log('parseFloat yieldPerCrop of getYieldForCrop:', parseYieldForCrop);
+    console.log('parseFloat yieldPerCrop of getYieldForCrop:', parseYieldForCrop);
     return parseYieldForCrop;
 
     //here under getYieldForCrop no factor w? yes-------------------------
@@ -94,7 +95,7 @@ const getYieldForCrop = (input, factor) => {
 
 //start test getTotalYield no factor works? yes? 23-6--------------------------------------
 const getTotalYield = (input) => {
-        console.log('input of getTotalYield ', input);
+        console.log('input of getTotalYield no fac', input);
 
         const cornYield = input.crops[0].crop.yield; //w?y
         console.log('cornYield ', cornYield); //w?y
@@ -116,18 +117,20 @@ const getTotalYield = (input) => {
         return resultYieldCrop
     } //getTotalY
 
-//end getTotalYield---------------------------------------------------------------
+//end getTotalYield no fac---------------------------------------------------------------
 
 //start test getTotalYield WITH factor works? not yet? 23-6--------------------------------------
 const getTotalYieldWithFactor = (input, factor) => {
     console.log('getTotalYieldWithFactor input', input); //w? 
-    console.log('getTotalYieldWithFactor factor', factor);
+    console.log('getTotalYieldWithFactor factor', factor); //w?y
 
     const yieldPerCrop = input.crops.map((eachCrop) => {
         console.log('eachCrop ', eachCrop);
         getYieldForCrop(eachCrop, factor)
         console.log('eachCrop of getYieldForcrop in map', getYieldForCrop)
+        return getYieldForCrop
     }); //.map
+    console.log('yieldPerCrop', yieldPerCrop);
     const totalYield = yieldPerCrop.reduce((acc, cur) => acc + cur);
     console.log('acc of totalYield', acc);
     console.log('cur of totalYield', cur);
@@ -260,6 +263,7 @@ module.exports = {
     getYieldForPlant_1,
     getYieldForCrop,
     getTotalYield,
+    getTotalYieldWithFactor,
     //getTotalYield_ZeroAmount,
     getCostForCrop,
     getRevenueForCrop,

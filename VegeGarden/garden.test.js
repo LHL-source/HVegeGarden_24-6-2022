@@ -3,6 +3,7 @@ const {
     getYieldForPlant_1,
     getYieldForCrop,
     getTotalYield,
+    getTotalYieldWithFactor,
     // getTotalYield_ZeroAmount,
     getCostForCrop,
     getRevenueForCrop,
