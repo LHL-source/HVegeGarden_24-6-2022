@@ -134,9 +134,12 @@ const getTotalYieldWithFactor = (input, factor) => {
     const totalYield = yieldPerCrop.reduce((acc, cur) => acc + cur);
     console.log('acc of totalYield', acc);
     console.log('cur of totalYield', cur);
+    console.log('reduce : totalYield before parseFloat ', totalYield);
     return parseFloat(totalYield.toFixed(2));
 
+
 }; //getTotal
+
 
 // const cornYield = input.crops[0].crop.yield; //w?y
 // console.log('cornYield ', cornYield); //w?y
